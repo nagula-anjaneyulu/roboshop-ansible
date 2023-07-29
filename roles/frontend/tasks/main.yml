@@ -3,14 +3,14 @@
 #systemctl restart nginx &>>$log_file
 #func_stat_check $?
 
-- name: Install the latest version of Apache
+- name: Install nginx
   ansible.builtin.yum:
-    name: httpd
+    name: nginx
     state: installed
 
 - name: Copy roboshop config file
   ansible.builtin.copy:
-    src: /roboshop.conf
+    src:  roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Clean old app content
